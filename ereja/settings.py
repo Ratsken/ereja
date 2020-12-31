@@ -181,9 +181,9 @@ import psycopg2.extensions
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ereja_db',
-        'USER': 'postgres',
-        'PASSWORD': 'wordless',
+        'NAME': 'erejacok_main_db',
+        'USER': 'erejacok_ratemo',
+        'PASSWORD': 'Wordlessnolan',
         'HOST': 'localhost',
         'PORT': '5432',
         'ATOMIC_REQUESTS': True,
