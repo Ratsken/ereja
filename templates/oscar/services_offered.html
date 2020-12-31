@@ -1,0 +1,25 @@
+{% extends "oscar/layout.html" %}
+
+{% load basket_tags %}
+{% load category_tags %}
+{% load product_tags %}
+{% load i18n %}
+
+{% block content %}
+    {% category_tree as tree_categories %}
+    {% if tree_categories %}
+{% for tree_category in tree_categories %}
+        <div class="col-md-4 col-sm-6">
+            <div class="center">
+                <i class="icon-apple icon-md icon-color1"></i>
+                <h4><a href="{{ tree_category.url }}">
+                                <strong>{{ tree_category.name }}</strong>
+
+                        </a>
+                </h4>
+              {{ tree_category.description }}
+            </div>
+        </div><!--/.col-md-4-->
+{% endfor %}
+{% endif %}
+{% endblock %}

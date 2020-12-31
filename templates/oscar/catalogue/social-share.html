@@ -1,0 +1,14 @@
+{% load social_share %}
+{% load product_tags %}
+{% load i18n %}
+<div>
+    <h4><a><i class="fa fa-share-alt" aria-hidden="true"></i> {% trans 'To Share This Product, Kindly Select One Option Below:' %} </a></h4>
+<a>{% post_to_facebook object_or_url "Post to Facebook!" %}</a>
+<a>{% post_to_twitter "New Product: {{ product.get_title }}. Check it out!" object_or_url "Post to Twitter" %}</a>
+<a>{% post_to_gplus object_or_url "Post to Google+!" %}</a>
+<a>{% post_to_linkedin object_or_url %}</a>
+<a>{% send_email object.title "New Product: {{ product.get_title }}. Check it out!" object_or_url "Share via email" %}</a>
+<a>{% post_to_telegram "New Product: {{ product.get_title }}" %}</a>
+<a>{% post_to_whatsapp object_or_url "Share via WhatsApp" %}</a>
+<a>{% save_to_pinterest object_or_url %}</a>
+<a>{% add_pinterest_script %}</a> </div><!-- Required for save_to_pinterest. Add to the end of body tag.

@@ -1,0 +1,11 @@
+{% load contact_form %}
+{% load i18n %}
+
+{% block content %}
+      <h2>Contact Us</h2>
+    <form method="POST" action="{% url 'contactform:index' %}">
+    {% csrf_token %}
+    {{ form.as_table }}
+    <button type="submit">{% trans "Submit" %}</button>
+    </form>
+{% endblock %}

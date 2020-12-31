@@ -1,0 +1,57 @@
+{% load currency_filters %}
+{% load category_tags %}
+{% load i18n %}
+{% load static %}
+    <nav id="header" role="banner">
+        <div class="container">
+            <div id="navbar" class="navbar navbar-default">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                      <a class="navbar-brand" href="{{ homepage_url }}">
+                        <img src="{% static 'oscar/logo.png' %}" width="136" height="52" class="d-inline-block align-top" alt="">
+                       </a>
+                </div>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="{{ homepage_url }}"><i class="icon-home"></i></a></li>
+                        {% load flatpages %}
+                        {% get_flatpages as flatpages %}
+                        <li>
+                          {% for page in flatpages %}
+                            <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                          {% endfor %}
+                        </li>
+                {% if user.is_authenticated %}
+                {% block nav_account_navbar_authenticated %}
+                    <li>
+                        {% if num_unread_notifications > 0 %}
+                            {# If user has new notifications - we change account link to go to inbox #}
+                            <a href="{% url 'customer:notifications-inbox' %}">
+                                <i class="icon-user"></i>
+                                {% trans "Account" %}
+                                <span class="label label-warning">{{ num_unread_notifications }}</span>
+                            </a>
+                        {% else %}
+                            <a href="{% url 'customer:summary' %}"><i class="icon-user"></i> {% trans "Account" %}</a>
+                        {% endif %}
+                    </li>
+                    {% if user.is_staff or perms.partner.dashboard_access %}
+                        <li><a href="{% url 'dashboard:index' %}"><i class="icon-list-ul"></i> {% trans "Dashboard" %}</a></li>
+                    {% endif %}
+                    <li><a id="logout_link" href="{% url 'customer:logout' %}"><i class="icon-signout"></i> {% trans "Logout" %}</a></li>
+                {% endblock %}
+                {% else %}
+                    <li><a id="login_link" href="{% url 'customer:login' %}"><i class="icon-signin"></i> {% trans "Login or register" %}</a></li>
+                {% endif %}
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </nav><!--/#header-->
