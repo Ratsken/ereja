@@ -176,16 +176,14 @@ WSGI_APPLICATION = 'ereja.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-import psycopg2.extensions
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': 'erejacok_main_db',
         'USER': 'erejacok_ratemo',
         'PASSWORD': 'Wordlessnolan',
         'HOST': 'localhost',
-        'PORT': '5432',
+        'PORT': '3306',
         'ATOMIC_REQUESTS': True,
     },
     'OPTIONS': {
