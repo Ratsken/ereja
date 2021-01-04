@@ -186,9 +186,6 @@ DATABASES = {
         'PORT': '3306',
         'ATOMIC_REQUESTS': True,
     },
-    'OPTIONS': {
-        'isolation_level': psycopg2.extensions.ISOLATION_LEVEL_SERIALIZABLE,
-    },
 }
 
 AUTHENTICATION_BACKENDS = (
