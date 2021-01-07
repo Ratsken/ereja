@@ -240,7 +240,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/hone2/erejacok/public_html/staticfiles'
+STATIC_ROOT = '/home2/erejacok/public_html/staticfiles'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
